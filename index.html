@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rick and Morty人格测试 - 穿越多重宇宙，发现你的真实性格！">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Rick and Morty 人格测试 | 穿越多重宇宙</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- 首页 -->
+        <div id="landing-page" class="hidden">
+            <div class="landing-content fade-in">
+                <div class="portal-container">
+                    <div class="portal-ring"></div>
+                    <div class="portal-ring"></div>
+                    <div class="portal-ring"></div>
+                    <div class="portal-center"></div>
+                </div>
+                
+                <div class="title-container">
+                    <h1 class="main-title">RICK & MORTY</h1>
+                    <p class="subtitle">人格测试</p>
+                    <p class="tagline">穿越多重宇宙，发现你的真实性格</p>
+                </div>
+                
+                <button id="start-btn" class="start-btn">
+                    🌀 进入传送门
+                </button>
+            </div>
+        </div>
+
+        <!-- 答题页 -->
+        <div id="quiz-page" class="hidden">
+            <div class="quiz-container fade-in">
+                <div class="progress-container">
+                    <div id="progress" class="progress-bar" style="width: 0%"></div>
+                </div>
+                
+                <p class="progress-text">问题 <span id="current-q">1</span> / <span id="total-q">30</span></p>
+                
+                <div class="question-card slide-in">
+                    <p class="question-number">问题 <span id="q-num">1</span></p>
+                    <h2 id="question-text" class="question-text"></h2>
+                    
+                    <div id="options-container" class="options-grid">
+                        <!-- 选项将通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加载页 -->
+        <div id="loading-page" class="hidden">
+            <div class="loading-content fade-in">
+                <h2 class="loading-title">正在穿越多重宇宙...</h2>
+                
+                <div class="loading-animation">
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                    <div class="loading-dot"></div>
+                </div>
+                
+                <p style="color: var(--text-secondary); margin-top: 30px; font-size: 1.1rem;">
+                    正在计算你的DNA匹配度
+                </p>
+                
+                <div class="loading-dna">
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页 -->
+        <div id="result-page" class="hidden">
+            <div class="result-content fade-in">
+                <div class="result-header">
+                    <p class="result-label">你是哪位角色？</p>
+                    <h2 id="result-character" class="result-character"></h2>
+                </div>
+                
+                <div class="result-card">
+                    <div class="character-image">
+                        <img id="result-image" src="" alt="Character">
+                    </div>
+                    
+                    <div id="result-percentage" class="result-percentage">0%</div>
+                    <p class="result-match">人格匹配度</p>
+                    
+                    <div id="result-traits" class="traits-container">
+                        <!-- 性格标签将通过JS动态生成 -->
+                    </div>
+                    
+                    <p id="result-description" class="result-description"></p>
+                </div>
+                
+                <button id="restart-btn" class="restart-btn">
+                    🔄 重新测试
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
