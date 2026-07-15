@@ -421,6 +421,10 @@ const resultDescription = document.getElementById('result-description');
 const resultTraits = document.getElementById('result-traits');
 const resultQuote = document.getElementById('result-quote');
 
+function vibrate(pattern = 16) {
+    navigator.vibrate?.(pattern);
+}
+
 function topCharacter(values) {
     return characterOrder.reduce((best, key) => values[key] > values[best] ? key : best);
 }
@@ -524,6 +528,7 @@ function renderQuestion() {
 function selectOption(optionIndex) {
     if (isAnswering) return;
     isAnswering = true;
+    vibrate(currentQuestion === questions.length - 1 ? [20, 30, 45] : 16);
 
     const question = questions[currentQuestion];
     const option = question.options[optionIndex];
@@ -565,6 +570,7 @@ function calculateResult() {
 
 // ==================== 重新测试 ====================
 function restartTest() {
+    vibrate(20);
     currentQuestion = 0;
     isAnswering = false;
     scores = {
@@ -585,6 +591,7 @@ function restartTest() {
 
 // ==================== 初始化 ====================
 document.getElementById('start-btn').addEventListener('click', () => {
+    vibrate(20);
     showQuizPage();
     renderQuestion();
 });
@@ -592,7 +599,10 @@ document.getElementById('start-btn').addEventListener('click', () => {
 document.getElementById('restart-btn').addEventListener('click', restartTest);
 
 castChoices.forEach(button => {
-    button.addEventListener('click', () => showCharacterPreview(button.dataset.character));
+    button.addEventListener('click', () => {
+        vibrate(10);
+        showCharacterPreview(button.dataset.character);
+    });
 });
 
 // 初始化显示首页
