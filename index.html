@@ -6,7 +6,7 @@
     <meta name="description" content="Rick and Morty 人格测试：回答 30 道题，看看你最像哪位角色。">
     <meta name="theme-color" content="#07121b">
     <title>Rick and Morty 人格测试</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛸</text></svg>">
 </head>
 <body data-scene="0">
@@ -47,40 +47,47 @@
     <main class="container">
         <section id="landing-page" class="page-shell">
             <div class="landing-content fade-in">
-                <p class="eyebrow">SMITH FAMILY PERSONALITY FILES · C-137</p>
+                <p class="eyebrow">RICK AND MORTY · 人格乱入测试</p>
 
                 <div class="landing-grid">
                     <div class="landing-copy">
-                        <p class="kicker">30 道题 · 6 位角色</p>
+                        <p class="kicker">Smith 家今天又出事了</p>
                         <h1 class="main-title">RICK<br>&amp; MORTY</h1>
-                        <p class="subtitle">你在瑞莫宇宙里，会是哪一种人格？</p>
-                        <p class="tagline">凭第一反应作答。答案没有对错，只负责把你送进最接近的角色档案。</p>
+                        <p class="subtitle">看看你会和谁一起把事情搞砸。</p>
+                        <p class="tagline">30 个问题，别琢磨太久，凭第一反应选。瑞克没那么多耐心。</p>
                         <button id="start-btn" class="start-btn" type="button">
-                            <span>开始测试</span>
+                            <span>行，开测</span>
                             <span aria-hidden="true">→</span>
                         </button>
                     </div>
 
-                    <div class="cast-board" aria-hidden="true">
-                        <div class="cast-card cast-rick">
-                            <img src="assets/rick.jpg" alt="">
-                            <span>RICK / 01</span>
+                    <div class="cast-board">
+                        <div class="cast-preview">
+                            <img id="preview-image" src="assets/rick.jpg" alt="瑞克角色头像">
+                            <div class="cast-preview-copy">
+                                <p id="preview-name">瑞克</p>
+                                <p id="preview-line">“规则当然有用，主要是用来判断什么时候该无视它。”</p>
+                            </div>
                         </div>
-                        <div class="cast-card cast-morty">
-                            <img src="assets/morty.jpg" alt="">
-                            <span>MORTY / 02</span>
+
+                        <div class="cast-selector" aria-label="看看参与测试的角色">
+                            <button class="cast-choice active" type="button" data-character="Rick" aria-label="查看瑞克" aria-pressed="true"><img src="assets/rick.jpg" alt=""></button>
+                            <button class="cast-choice" type="button" data-character="Morty" aria-label="查看莫提" aria-pressed="false"><img src="assets/morty.jpg" alt=""></button>
+                            <button class="cast-choice" type="button" data-character="Summer" aria-label="查看桑美" aria-pressed="false"><img src="assets/summer.jpg" alt=""></button>
+                            <button class="cast-choice" type="button" data-character="Beth" aria-label="查看贝丝" aria-pressed="false"><img src="assets/beth.jpg" alt=""></button>
+                            <button class="cast-choice" type="button" data-character="Jerry" aria-label="查看杰瑞" aria-pressed="false"><img src="assets/jerry.jpg" alt=""></button>
+                            <button class="cast-choice" type="button" data-character="MrPoopybutthole" aria-label="查看屎洞先生" aria-pressed="false"><img src="assets/poopybutthole.jpg" alt=""></button>
                         </div>
-                        <p class="case-note">CASE FILE<br><strong>UNKNOWN</strong></p>
                     </div>
                 </div>
 
-                <div class="character-strip" aria-hidden="true">
-                    <span>RICK</span>
-                    <span>MORTY</span>
-                    <span>SUMMER</span>
-                    <span>BETH</span>
-                    <span>JERRY</span>
-                    <span>MR. POOPYBUTTHOLE</span>
+                <div class="character-strip">
+                    <span>瑞克：嘴硬天才</span>
+                    <span>莫提：善良但慌</span>
+                    <span>桑美：清醒又敢冲</span>
+                    <span>贝丝：要强的成年人</span>
+                    <span>杰瑞：普通但真诚</span>
+                    <span>屎洞先生：笑着扛事</span>
                 </div>
             </div>
         </section>
@@ -88,8 +95,8 @@
         <section id="quiz-page" class="page-shell hidden">
             <div class="quiz-container fade-in">
                 <div class="quiz-meta">
-                    <span>PERSONALITY FILE</span>
-                    <span>DIMENSION C-137</span>
+                    <span id="guide-label">本题旁听：瑞克</span>
+                    <span>别让瑞克等太久</span>
                 </div>
 
                 <div class="progress-container" aria-hidden="true">
@@ -98,8 +105,16 @@
 
                 <p class="progress-text">问题 <span id="current-q">1</span> / <span id="total-q">30</span></p>
 
+                <aside class="character-commentary" aria-live="polite">
+                    <img id="guide-avatar" src="assets/rick.jpg" alt="瑞克角色头像">
+                    <div id="guide-bubble" class="speech-bubble">
+                        <strong id="guide-name">瑞克</strong>
+                        <p id="guide-line">别把一道选择题想成宇宙伦理大会。</p>
+                    </div>
+                </aside>
+
                 <div class="question-card slide-in">
-                    <p class="question-number">QUESTION <span id="q-num">1</span></p>
+                    <p class="question-number">第 <span id="q-num">1</span> 题</p>
                     <h2 id="question-text" class="question-text" aria-live="polite"></h2>
                     <div id="options-container" class="options-grid"></div>
                 </div>
@@ -108,8 +123,8 @@
 
         <section id="loading-page" class="page-shell hidden">
             <div class="loading-content fade-in">
-                <p class="eyebrow">PERSONALITY SCAN IN PROGRESS</p>
-                <h2 class="loading-title">正在比对角色档案...</h2>
+                <p class="eyebrow">SMITH FAMILY 正在争论</p>
+                <h2 class="loading-title">他们正在决定你更像谁...</h2>
 
                 <div class="loading-cast" aria-hidden="true">
                     <img src="assets/rick.jpg" alt="">
@@ -119,7 +134,7 @@
                     <img src="assets/summer.jpg" alt="">
                 </div>
 
-                <p class="loading-copy">正在计算人格匹配度</p>
+                <p class="loading-copy">瑞克说结果早就有了，杰瑞坚持要再数一遍。</p>
                 <div class="loading-dna" aria-hidden="true">
                     <div class="dna-strand"></div>
                     <div class="dna-strand"></div>
@@ -133,7 +148,7 @@
         <section id="result-page" class="page-shell hidden">
             <div class="result-content fade-in">
                 <div class="result-header">
-                    <p class="result-label">你的角色档案</p>
+                    <p class="result-label">Smith 家投票结果</p>
                     <h2 id="result-character" class="result-character"></h2>
                 </div>
 
@@ -143,9 +158,10 @@
                     </div>
 
                     <div id="result-percentage" class="result-percentage">0%</div>
-                    <p class="result-match">人格匹配度</p>
+                    <p class="result-match">你们的同频程度</p>
 
                     <div id="result-traits" class="traits-container"></div>
+                    <blockquote id="result-quote" class="result-quote"></blockquote>
                     <p id="result-description" class="result-description"></p>
                 </div>
 
@@ -157,6 +173,6 @@
         </section>
     </main>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

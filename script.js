@@ -4,41 +4,109 @@
 const characters = {
     Rick: {
         name: "Rick Sanchez (瑞克)",
+        displayName: "瑞克",
         image: "assets/rick.jpg",
-        traits: ["天才", "反叛", "理性", "冒险"],
-        description: "你就是Rick Sanchez——全宇宙最聪明的科学家！你对无聊的社交毫无耐心，整天泡在车库里搞些疯狂的实验。对你来说，多重宇宙就是你的游乐场，死亡不过是换个维度继续玩。你的口头禅\"Wubba Lubba Dub Dub!\"已经成为你人生哲学的最佳注脚。你不在乎别人的眼光，因为99%的宇宙里你都是最酷的那个。科学万能，但酒精也是万能的——两者结合才是完美人生！"
+        traits: ["脑子转得快", "不吃规矩这套", "嘴硬", "行动派"],
+        preview: "“规则当然有用，主要是用来判断什么时候该无视它。”",
+        comments: [
+            "别把一道选择题想成宇宙伦理大会。",
+            "犹豫超过十秒，我就默认你选最无聊的那个。",
+            "别选听起来聪明的，选你真的会做的。",
+            "这一题没有陷阱。也可能全是陷阱。",
+            "快点，我车库里还有个宇宙等着爆炸。"
+        ],
+        reaction: "嗯，这个答案至少没浪费我的脑细胞。",
+        quote: "“别误会，我不是在夸你。只是你还没蠢到让我关掉页面。”",
+        description: "你习惯先拆问题，再拆规则。很多时候你不是故意唱反调，只是很难对低效和废话装作没看见。你嘴上总说不在乎，真遇到自己认定的人，还是会悄悄把最危险的部分接过去。"
     },
     Morty: {
         name: "Morty Smith (莫提)",
+        displayName: "莫提",
         image: "assets/morty.jpg",
-        traits: ["平庸", "顺从", "感性", "安稳"],
-        description: "你是Morty Smith——那个总被Rick拖着冒险的可怜孩子。别看你总是紧张兮兮、畏畏缩缩的样子，其实你有着最善良的心和最强烈的道德感。你会在冒险途中担心每一个外星生物的安危，会为了帮助一个刚认识的朋友而冒险。你可能不是最聪明的，但你绝对是最有同情心的。在这个疯狂的多元宇宙里，你的'正常人'视角反而是最珍贵的存在！"
+        traits: ["会怕但会去", "共情力强", "有底线", "念旧"],
+        preview: "“我只是觉得，做选择前最好先看看有没有人会受伤。”",
+        comments: [
+            "哦天，这题怎么听起来又要出事了？",
+            "你可以慢一点，但别让瑞克发现你在犹豫。",
+            "选那个晚上睡觉不会心虚的答案吧。",
+            "我觉得普通一点也没什么不好，真的。",
+            "先说好，答完不会突然把我传送走吧？"
+        ],
+        reaction: "这个选择……听起来还算不会毁掉一个星球。",
+        quote: "“至少你还会先想想，自己的选择会不会伤到谁。”",
+        description: "你会紧张、会犹豫，但这不等于软弱。乱成一团的时候，你仍会问一句“这样做会不会伤到谁”。这份良心在瑞莫宇宙里稀缺得离谱，也是你真正靠得住的地方。"
     },
     Summer: {
         name: "Summer (桑美)",
+        displayName: "桑美",
         image: "assets/summer.jpg",
-        traits: ["平庸", "反叛", "感性", "冒险"],
-        description: "你是Summer——Morty的姐姐，一个典型的青少年！你追求潮流、关注社交媒体、渴望被认可，但内心深处其实有着比表面上更酷的一面。你会为了跟上潮流而冒险，也会在关键时刻爆发出惊人的勇气。你可能就是那种嘴上说着不在乎、心里却很在意一切的傲娇女孩。别担心，你的人气和你的冒险精神一样旺盛！"
+        traits: ["反应快", "不服输", "会玩", "临场稳定"],
+        preview: "“世界末日可以等一下，我先把这件事发完。”",
+        comments: [
+            "拜托，别选那个一看就很无聊的答案。",
+            "这题我懂，重点不是对不对，是你敢不敢。",
+            "别管他们怎么想，你又不是来竞选好孩子的。",
+            "有时候先冲出去，路上再想也完全来得及。",
+            "这道题要是发到网上，评论区一定会吵起来。"
+        ],
+        reaction: "终于有个不那么无聊的答案了。",
+        quote: "“好吧，你确实比这家里大多数人更会活。”",
+        description: "你很在意当下，也很会在混乱里迅速适应。别人以为你只关心好不好玩，你却常在关键时刻做出最干脆的决定。你要的不是被安排好，而是自己决定站哪边。"
     },
     Beth: {
         name: "Beth Sanchez (贝丝)",
+        displayName: "贝丝",
         image: "assets/beth.jpg",
-        traits: ["天才", "顺从", "理性", "安稳"],
-        description: "你是Beth Sanchez——Rick的女儿，一个心外科兽医！表面上你是个专业的兽医，梦想着能像父亲一样做更伟大的手术。但内心深处，你总是在纠结自己是不是真的值得被爱，是不是父亲的一个克隆体。你努力维持着看似完美的家庭生活，内心却渴望更多的冒险。别再纠结了，你就是你，独一无二的贝丝！"
+        traits: ["理性", "要强", "顾家", "不甘平淡"],
+        preview: "“我能把生活安排好，不代表我不想把桌子掀了。”",
+        comments: [
+            "先诚实回答，别挑那个看起来最体面的。",
+            "成年人最擅长的事，就是一边负责一边想逃跑。",
+            "你真正想做什么，通常比“应该做什么”更明显。",
+            "这题不难，难的是承认自己的答案。",
+            "选吧，反正最后收拾残局的人大概率还是我。"
+        ],
+        reaction: "你比自己以为的更清楚想要什么。",
+        quote: "“能把日子撑住，还保留一点不安分，挺像我的。”",
+        description: "你能扛事，也习惯把情绪放到事情做完以后再处理。稳定对你很重要，但你并不甘心一眼看到生活的尽头。你真正纠结的，常常不是能不能做到，而是这是不是你自己选的。"
     },
     Jerry: {
         name: "Jerry Smith (杰瑞)",
+        displayName: "杰瑞",
         image: "assets/jerry.jpg",
-        traits: ["平庸", "顺从", "感性", "安稳"],
-        description: "你是Jerry Smith——这个家里永远的loser，老爸老妈的出气筒。你没什么大本事，找工作总是碰壁，照顾孩子也是一团糟。但知道吗？正是你的'普通'让这个家庭保持正常运转。你会在家人需要时默默支持，会为了证明自己而努力（虽然总是失败）。也许你不是最成功的，但你绝对是最忠诚的家庭成员！加油Jerry，你可以的！"
+        traits: ["真诚", "重感情", "需要肯定", "有韧劲"],
+        preview: "“普通有什么不好？普通人也可以做一份很不错的三明治。”",
+        comments: [
+            "我觉得这题没有标准答案。瑞克说我这么想就是错的。",
+            "选一个让大家都舒服的，不也挺好吗？",
+            "有时候承认自己不知道，也需要一点勇气。",
+            "我支持你。不管你选什么，至少现在支持。",
+            "别有压力，我也经常在第一步就开始有压力。"
+        ],
+        reaction: "我觉得这个答案挺好。真的，不是在安慰你。",
+        quote: "“普通不是失败，至少我们真的在乎身边的人。”",
+        description: "你在乎关系，也希望自己的努力能被看见。你未必总能抢到最亮眼的位置，但遇到低谷时，你往往比想象中更能熬。普通不是缺点，它只是意味着你愿意认真过好那些没人鼓掌的日子。"
     },
     MrPoopybutthole: {
         name: "Mr. Poopybutthole (屎洞先生)",
+        displayName: "屎洞先生",
         image: "assets/poopybutthole.jpg",
-        traits: ["天才", "反叛", "感性", "冒险"],
-        description: "你是Mr. Poopybutthole——那个住在Rick家里、偶尔出现的黄色小生物！你看起来人畜无害，其实经历比你看起来复杂得多。你来自另一个维度，靠着被Rick'收养'混进了这个家庭。你会弹钢琴、会唱歌、会在关键时刻用你独特的方式帮助大家。也许你看起来有点...呃...傻傻的，但你的存在本身就是对常规的一种挑战！"
+        traits: ["乐观", "有戏", "意外坚强", "气氛担当"],
+        preview: "“Ooh-wee！日子乱一点，故事才有得讲嘛。”",
+        comments: [
+            "Ooh-wee！凭感觉来，第一反应通常很诚实。",
+            "这题让我想起一段不太方便展开的往事。",
+            "生活很奇怪，但你还是可以选得开心一点。",
+            "别怕选错，我的人生都错成连续剧了。",
+            "Ooh-wee！最后几题也要好好玩呀。"
+        ],
+        reaction: "Ooh-wee！我喜欢这个选择！",
+        quote: "“你的人生可能有点乱，但你总能笑着继续。”",
+        description: "你看起来随和，真正遇到事却比很多人更能扛。你知道生活会突然拐向奇怪的方向，所以很少把一时的狼狈当成结局。能笑着继续，不是没心没肺，是你的恢复力。"
     }
 };
+
+const characterOrder = Object.keys(characters);
 
 // ==================== 题目数据 ====================
 const questions = [
@@ -295,6 +363,15 @@ const questions = [
         ]
     },
     {
+        question: "Smith 家突然空出一个座位，你会坐到谁旁边？",
+        options: [
+            { text: "瑞克旁边，顺便看看他又藏了什么发明", scores: { Rick: 4, Morty: 1, Summer: 2, Beth: 3, Jerry: 0, MrPoopybutthole: 2 } },
+            { text: "莫提旁边，至少他会提醒我什么时候该跑", scores: { Rick: 1, Morty: 4, Summer: 2, Beth: 1, Jerry: 3, MrPoopybutthole: 2 } },
+            { text: "桑美旁边，离谱场面来了还能一起吐槽", scores: { Rick: 2, Morty: 2, Summer: 4, Beth: 2, Jerry: 1, MrPoopybutthole: 3 } },
+            { text: "贝丝和杰瑞中间，我想先听听家长怎么说", scores: { Rick: 1, Morty: 2, Summer: 1, Beth: 4, Jerry: 4, MrPoopybutthole: 1 } }
+        ]
+    },
+    {
         question: "最后一个问题：你相信命运吗？",
         options: [
             { text: "命运？老子就是命运的主宰！", scores: { Rick: 4, Morty: 1, Summer: 2, Beth: 2, Jerry: 1, MrPoopybutthole: 3 } },
@@ -323,16 +400,55 @@ const quizPage = document.getElementById('quiz-page');
 const loadingPage = document.getElementById('loading-page');
 const resultPage = document.getElementById('result-page');
 const progressBar = document.getElementById('progress');
+const previewImage = document.getElementById('preview-image');
+const previewName = document.getElementById('preview-name');
+const previewLine = document.getElementById('preview-line');
+const castChoices = document.querySelectorAll('.cast-choice');
 const currentQuestionText = document.getElementById('current-q');
 const totalQuestionsText = document.getElementById('total-q');
 const questionNumber = document.getElementById('q-num');
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
+const guideLabel = document.getElementById('guide-label');
+const guideAvatar = document.getElementById('guide-avatar');
+const guideName = document.getElementById('guide-name');
+const guideLine = document.getElementById('guide-line');
+const guideBubble = document.getElementById('guide-bubble');
 const resultCharacterName = document.getElementById('result-character');
 const resultImage = document.getElementById('result-image');
 const resultPercentage = document.getElementById('result-percentage');
 const resultDescription = document.getElementById('result-description');
 const resultTraits = document.getElementById('result-traits');
+const resultQuote = document.getElementById('result-quote');
+
+function topCharacter(values) {
+    return characterOrder.reduce((best, key) => values[key] > values[best] ? key : best);
+}
+
+function showCharacterPreview(characterKey) {
+    const character = characters[characterKey];
+    previewImage.src = character.image;
+    previewImage.alt = character.displayName + '角色头像';
+    previewName.textContent = character.displayName;
+    previewLine.textContent = character.preview;
+
+    castChoices.forEach(button => {
+        const active = button.dataset.character === characterKey;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active);
+    });
+}
+
+function showGuide(characterKey, line, reacting = false) {
+    const character = characters[characterKey];
+    guideLabel.textContent = '本题旁听：' + character.displayName;
+    guideAvatar.src = character.image;
+    guideAvatar.alt = character.displayName + '角色头像';
+    guideName.textContent = character.displayName;
+    guideLine.textContent = line;
+    guideBubble.classList.remove('reacting');
+    if (reacting) guideBubble.classList.add('reacting');
+}
 
 // ==================== 页面切换 ====================
 function showLandingPage() {
@@ -363,8 +479,9 @@ function showResultPage(characterKey) {
     resultPage.classList.remove('hidden');
     
     const character = characters[characterKey];
-    const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
-    const percentage = totalScore > 0 ? Math.round((scores[characterKey] / totalScore) * 100) : 0;
+    const percentage = Math.round((scores[characterKey] / (questions.length * 4)) * 100);
+
+    document.body.dataset.scene = String(characterOrder.indexOf(characterKey));
     
     resultCharacterName.textContent = character.name;
     resultImage.src = character.image;
@@ -372,15 +489,19 @@ function showResultPage(characterKey) {
     resultPercentage.textContent = percentage + '%';
     resultDescription.textContent = character.description;
     resultTraits.innerHTML = character.traits.map(trait => '<span class="trait-tag">' + trait + '</span>').join('');
+    resultQuote.textContent = character.quote;
 }
 
 // ==================== 题目渲染 ====================
 function renderQuestion() {
     const question = questions[currentQuestion];
     const visibleNumber = currentQuestion + 1;
+    const guideKey = characterOrder[currentQuestion % characterOrder.length];
+    const commentIndex = Math.floor(currentQuestion / characterOrder.length);
 
     isAnswering = false;
-    document.body.dataset.scene = String(currentQuestion % 6);
+    document.body.dataset.scene = String(currentQuestion % characterOrder.length);
+    showGuide(guideKey, characters[guideKey].comments[commentIndex]);
     questionText.textContent = question.question;
     currentQuestionText.textContent = visibleNumber;
     questionNumber.textContent = visibleNumber;
@@ -411,6 +532,10 @@ function selectOption(optionIndex) {
     for (const [character, score] of Object.entries(option.scores)) {
         scores[character] += score;
     }
+
+    const reactionKey = topCharacter(option.scores);
+    document.body.dataset.scene = String(characterOrder.indexOf(reactionKey));
+    showGuide(reactionKey, characters[reactionKey].reaction, true);
     
     // 禁用所有按钮
     const buttons = optionsContainer.querySelectorAll('.option-btn');
@@ -428,24 +553,14 @@ function selectOption(optionIndex) {
             renderQuestion();
         } else {
             showLoadingPage();
-            setTimeout(calculateResult, 2500);
+            setTimeout(calculateResult, 1600);
         }
-    }, 400);
+    }, 650);
 }
 
 // ==================== 计算结果 ====================
 function calculateResult() {
-    let maxScore = 0;
-    let resultKey = 'Morty';
-    
-    for (const [character, score] of Object.entries(scores)) {
-        if (score > maxScore) {
-            maxScore = score;
-            resultKey = character;
-        }
-    }
-    
-    showResultPage(resultKey);
+    showResultPage(topCharacter(scores));
 }
 
 // ==================== 重新测试 ====================
@@ -464,6 +579,7 @@ function restartTest() {
     progressBar.style.width = '0%';
     currentQuestionText.textContent = '1';
     questionNumber.textContent = '1';
+    showCharacterPreview('Rick');
     showLandingPage();
 }
 
@@ -474,6 +590,10 @@ document.getElementById('start-btn').addEventListener('click', () => {
 });
 
 document.getElementById('restart-btn').addEventListener('click', restartTest);
+
+castChoices.forEach(button => {
+    button.addEventListener('click', () => showCharacterPreview(button.dataset.character));
+});
 
 // 初始化显示首页
 showLandingPage();
