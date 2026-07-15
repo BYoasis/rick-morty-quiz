@@ -3,112 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rick and Morty人格测试 - 穿越多重宇宙，发现你的真实性格！">
-    <meta name="theme-color" content="#0a0a0f">
-    <title>Rick and Morty 人格测试 | 穿越多重宇宙</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
+    <meta name="description" content="Rick and Morty 人格测试：回答 30 道题，看看你最像哪位角色。">
+    <meta name="theme-color" content="#07121b">
+    <title>Rick and Morty 人格测试</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛸</text></svg>">
 </head>
-<body>
-    <div class="container">
-        <!-- 首页 -->
-        <div id="landing-page" class="hidden">
-            <div class="landing-content fade-in">
-                <div class="portal-container">
-                    <div class="portal-ring"></div>
-                    <div class="portal-ring"></div>
-                    <div class="portal-ring"></div>
-                    <div class="portal-center"></div>
-                </div>
-                
-                <div class="title-container">
-                    <h1 class="main-title">RICK & MORTY</h1>
-                    <p class="subtitle">人格测试</p>
-                    <p class="tagline">穿越多重宇宙，发现你的真实性格</p>
-                </div>
-                
-                <button id="start-btn" class="start-btn">
-                    🌀 进入传送门
-                </button>
-            </div>
-        </div>
+<body data-scene="0">
+    <div class="scene-layer" aria-hidden="true">
+        <img class="scene-backdrop" src="assets/rm-family-space.jpg" alt="">
+        <div class="space-grid"></div>
 
-        <!-- 答题页 -->
-        <div id="quiz-page" class="hidden">
-            <div class="quiz-container fade-in">
-                <div class="progress-container">
-                    <div id="progress" class="progress-bar" style="width: 0%"></div>
-                </div>
-                
-                <p class="progress-text">问题 <span id="current-q">1</span> / <span id="total-q">30</span></p>
-                
-                <div class="question-card slide-in">
-                    <p class="question-number">问题 <span id="q-num">1</span></p>
-                    <h2 id="question-text" class="question-text"></h2>
-                    
-                    <div id="options-container" class="options-grid">
-                        <!-- 选项将通过JS动态生成 -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        <figure class="scene-sticker sticker-rick">
+            <img src="assets/rick.jpg" alt="">
+            <figcaption>C-137</figcaption>
+        </figure>
+        <figure class="scene-sticker sticker-morty">
+            <img src="assets/morty.jpg" alt="">
+            <figcaption>AW, GEEZ</figcaption>
+        </figure>
+        <figure class="scene-sticker sticker-summer">
+            <img src="assets/summer.jpg" alt="">
+            <figcaption>SUMMER</figcaption>
+        </figure>
+        <figure class="scene-sticker sticker-beth">
+            <img src="assets/beth.jpg" alt="">
+            <figcaption>CLONE?</figcaption>
+        </figure>
+        <figure class="scene-sticker sticker-jerry">
+            <img src="assets/jerry.jpg" alt="">
+            <figcaption>HUMAN MUSIC</figcaption>
+        </figure>
+        <figure class="scene-sticker sticker-poopy">
+            <img src="assets/poopybutthole.jpg" alt="">
+            <figcaption>OO-WEE!</figcaption>
+        </figure>
 
-        <!-- 加载页 -->
-        <div id="loading-page" class="hidden">
-            <div class="loading-content fade-in">
-                <h2 class="loading-title">正在穿越多重宇宙...</h2>
-                
-                <div class="loading-animation">
-                    <div class="loading-ring"></div>
-                    <div class="loading-ring"></div>
-                    <div class="loading-ring"></div>
-                    <div class="loading-dot"></div>
-                </div>
-                
-                <p style="color: var(--text-secondary); margin-top: 30px; font-size: 1.1rem;">
-                    正在计算你的DNA匹配度
-                </p>
-                
-                <div class="loading-dna">
-                    <div class="dna-strand"></div>
-                    <div class="dna-strand"></div>
-                    <div class="dna-strand"></div>
-                    <div class="dna-strand"></div>
-                    <div class="dna-strand"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 结果页 -->
-        <div id="result-page" class="hidden">
-            <div class="result-content fade-in">
-                <div class="result-header">
-                    <p class="result-label">你是哪位角色？</p>
-                    <h2 id="result-character" class="result-character"></h2>
-                </div>
-                
-                <div class="result-card">
-                    <div class="character-image">
-                        <img id="result-image" src="" alt="Character">
-                    </div>
-                    
-                    <div id="result-percentage" class="result-percentage">0%</div>
-                    <p class="result-match">人格匹配度</p>
-                    
-                    <div id="result-traits" class="traits-container">
-                        <!-- 性格标签将通过JS动态生成 -->
-                    </div>
-                    
-                    <p id="result-description" class="result-description"></p>
-                </div>
-                
-                <button id="restart-btn" class="restart-btn">
-                    🔄 重新测试
-                </button>
-            </div>
-        </div>
+        <span class="comic-stamp stamp-one">WUBBA LUBBA</span>
+        <span class="comic-stamp stamp-two">PLUMBUS</span>
+        <span class="comic-stamp stamp-three">DIMENSION 35-C</span>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <main class="container">
+        <section id="landing-page" class="page-shell">
+            <div class="landing-content fade-in">
+                <p class="eyebrow">SMITH FAMILY PERSONALITY FILES · C-137</p>
+
+                <div class="landing-grid">
+                    <div class="landing-copy">
+                        <p class="kicker">30 道题 · 6 位角色</p>
+                        <h1 class="main-title">RICK<br>&amp; MORTY</h1>
+                        <p class="subtitle">你在瑞莫宇宙里，会是哪一种人格？</p>
+                        <p class="tagline">凭第一反应作答。答案没有对错，只负责把你送进最接近的角色档案。</p>
+                        <button id="start-btn" class="start-btn" type="button">
+                            <span>开始测试</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+
+                    <div class="cast-board" aria-hidden="true">
+                        <div class="cast-card cast-rick">
+                            <img src="assets/rick.jpg" alt="">
+                            <span>RICK / 01</span>
+                        </div>
+                        <div class="cast-card cast-morty">
+                            <img src="assets/morty.jpg" alt="">
+                            <span>MORTY / 02</span>
+                        </div>
+                        <p class="case-note">CASE FILE<br><strong>UNKNOWN</strong></p>
+                    </div>
+                </div>
+
+                <div class="character-strip" aria-hidden="true">
+                    <span>RICK</span>
+                    <span>MORTY</span>
+                    <span>SUMMER</span>
+                    <span>BETH</span>
+                    <span>JERRY</span>
+                    <span>MR. POOPYBUTTHOLE</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-page" class="page-shell hidden">
+            <div class="quiz-container fade-in">
+                <div class="quiz-meta">
+                    <span>PERSONALITY FILE</span>
+                    <span>DIMENSION C-137</span>
+                </div>
+
+                <div class="progress-container" aria-hidden="true">
+                    <div id="progress" class="progress-bar" style="width: 0%"></div>
+                </div>
+
+                <p class="progress-text">问题 <span id="current-q">1</span> / <span id="total-q">30</span></p>
+
+                <div class="question-card slide-in">
+                    <p class="question-number">QUESTION <span id="q-num">1</span></p>
+                    <h2 id="question-text" class="question-text" aria-live="polite"></h2>
+                    <div id="options-container" class="options-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="loading-page" class="page-shell hidden">
+            <div class="loading-content fade-in">
+                <p class="eyebrow">PERSONALITY SCAN IN PROGRESS</p>
+                <h2 class="loading-title">正在比对角色档案...</h2>
+
+                <div class="loading-cast" aria-hidden="true">
+                    <img src="assets/rick.jpg" alt="">
+                    <span></span>
+                    <img src="assets/morty.jpg" alt="">
+                    <span></span>
+                    <img src="assets/summer.jpg" alt="">
+                </div>
+
+                <p class="loading-copy">正在计算人格匹配度</p>
+                <div class="loading-dna" aria-hidden="true">
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                    <div class="dna-strand"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="result-page" class="page-shell hidden">
+            <div class="result-content fade-in">
+                <div class="result-header">
+                    <p class="result-label">你的角色档案</p>
+                    <h2 id="result-character" class="result-character"></h2>
+                </div>
+
+                <div class="result-card">
+                    <div class="character-image">
+                        <img id="result-image" src="" alt="">
+                    </div>
+
+                    <div id="result-percentage" class="result-percentage">0%</div>
+                    <p class="result-match">人格匹配度</p>
+
+                    <div id="result-traits" class="traits-container"></div>
+                    <p id="result-description" class="result-description"></p>
+                </div>
+
+                <button id="restart-btn" class="restart-btn" type="button">
+                    <span aria-hidden="true">↻</span>
+                    <span>重新测试</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js?v=3"></script>
 </body>
 </html>

@@ -4,31 +4,37 @@
 const characters = {
     Rick: {
         name: "Rick Sanchez (瑞克)",
+        image: "assets/rick.jpg",
         traits: ["天才", "反叛", "理性", "冒险"],
         description: "你就是Rick Sanchez——全宇宙最聪明的科学家！你对无聊的社交毫无耐心，整天泡在车库里搞些疯狂的实验。对你来说，多重宇宙就是你的游乐场，死亡不过是换个维度继续玩。你的口头禅\"Wubba Lubba Dub Dub!\"已经成为你人生哲学的最佳注脚。你不在乎别人的眼光，因为99%的宇宙里你都是最酷的那个。科学万能，但酒精也是万能的——两者结合才是完美人生！"
     },
     Morty: {
         name: "Morty Smith (莫提)",
+        image: "assets/morty.jpg",
         traits: ["平庸", "顺从", "感性", "安稳"],
         description: "你是Morty Smith——那个总被Rick拖着冒险的可怜孩子。别看你总是紧张兮兮、畏畏缩缩的样子，其实你有着最善良的心和最强烈的道德感。你会在冒险途中担心每一个外星生物的安危，会为了帮助一个刚认识的朋友而冒险。你可能不是最聪明的，但你绝对是最有同情心的。在这个疯狂的多元宇宙里，你的'正常人'视角反而是最珍贵的存在！"
     },
     Summer: {
         name: "Summer (桑美)",
+        image: "assets/summer.jpg",
         traits: ["平庸", "反叛", "感性", "冒险"],
         description: "你是Summer——Morty的姐姐，一个典型的青少年！你追求潮流、关注社交媒体、渴望被认可，但内心深处其实有着比表面上更酷的一面。你会为了跟上潮流而冒险，也会在关键时刻爆发出惊人的勇气。你可能就是那种嘴上说着不在乎、心里却很在意一切的傲娇女孩。别担心，你的人气和你的冒险精神一样旺盛！"
     },
     Beth: {
         name: "Beth Sanchez (贝丝)",
+        image: "assets/beth.jpg",
         traits: ["天才", "顺从", "理性", "安稳"],
         description: "你是Beth Sanchez——Rick的女儿，一个心外科兽医！表面上你是个专业的兽医，梦想着能像父亲一样做更伟大的手术。但内心深处，你总是在纠结自己是不是真的值得被爱，是不是父亲的一个克隆体。你努力维持着看似完美的家庭生活，内心却渴望更多的冒险。别再纠结了，你就是你，独一无二的贝丝！"
     },
     Jerry: {
         name: "Jerry Smith (杰瑞)",
+        image: "assets/jerry.jpg",
         traits: ["平庸", "顺从", "感性", "安稳"],
         description: "你是Jerry Smith——这个家里永远的loser，老爸老妈的出气筒。你没什么大本事，找工作总是碰壁，照顾孩子也是一团糟。但知道吗？正是你的'普通'让这个家庭保持正常运转。你会在家人需要时默默支持，会为了证明自己而努力（虽然总是失败）。也许你不是最成功的，但你绝对是最忠诚的家庭成员！加油Jerry，你可以的！"
     },
     MrPoopybutthole: {
         name: "Mr. Poopybutthole (屎洞先生)",
+        image: "assets/poopybutthole.jpg",
         traits: ["天才", "反叛", "感性", "冒险"],
         description: "你是Mr. Poopybutthole——那个住在Rick家里、偶尔出现的黄色小生物！你看起来人畜无害，其实经历比你看起来复杂得多。你来自另一个维度，靠着被Rick'收养'混进了这个家庭。你会弹钢琴、会唱歌、会在关键时刻用你独特的方式帮助大家。也许你看起来有点...呃...傻傻的，但你的存在本身就是对常规的一种挑战！"
     }
@@ -301,6 +307,7 @@ const questions = [
 
 // ==================== 状态管理 ====================
 let currentQuestion = 0;
+let isAnswering = false;
 let scores = {
     Rick: 0,
     Morty: 0,
@@ -316,9 +323,13 @@ const quizPage = document.getElementById('quiz-page');
 const loadingPage = document.getElementById('loading-page');
 const resultPage = document.getElementById('result-page');
 const progressBar = document.getElementById('progress');
+const currentQuestionText = document.getElementById('current-q');
+const totalQuestionsText = document.getElementById('total-q');
+const questionNumber = document.getElementById('q-num');
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
-const resultCharacter = document.getElementById('result-character');
+const resultCharacterName = document.getElementById('result-character');
+const resultImage = document.getElementById('result-image');
 const resultPercentage = document.getElementById('result-percentage');
 const resultDescription = document.getElementById('result-description');
 const resultTraits = document.getElementById('result-traits');
@@ -355,7 +366,9 @@ function showResultPage(characterKey) {
     const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
     const percentage = totalScore > 0 ? Math.round((scores[characterKey] / totalScore) * 100) : 0;
     
-    resultCharacter.textContent = character.name;
+    resultCharacterName.textContent = character.name;
+    resultImage.src = character.image;
+    resultImage.alt = character.name + ' 角色头像';
     resultPercentage.textContent = percentage + '%';
     resultDescription.textContent = character.description;
     resultTraits.innerHTML = character.traits.map(trait => '<span class="trait-tag">' + trait + '</span>').join('');
@@ -364,14 +377,22 @@ function showResultPage(characterKey) {
 // ==================== 题目渲染 ====================
 function renderQuestion() {
     const question = questions[currentQuestion];
+    const visibleNumber = currentQuestion + 1;
+
+    isAnswering = false;
+    document.body.dataset.scene = String(currentQuestion % 6);
     questionText.textContent = question.question;
-    
-    progressBar.style.width = ((currentQuestion + 1) / questions.length) * 100 + '%';
+    currentQuestionText.textContent = visibleNumber;
+    questionNumber.textContent = visibleNumber;
+    totalQuestionsText.textContent = questions.length;
+    progressBar.style.width = (visibleNumber / questions.length) * 100 + '%';
     
     optionsContainer.innerHTML = '';
     question.options.forEach((option, index) => {
         const button = document.createElement('button');
         button.className = 'option-btn';
+        button.type = 'button';
+        button.dataset.label = String.fromCharCode(65 + index);
         button.textContent = option.text;
         button.addEventListener('click', () => selectOption(index));
         optionsContainer.appendChild(button);
@@ -380,6 +401,9 @@ function renderQuestion() {
 
 // ==================== 选项选择 ====================
 function selectOption(optionIndex) {
+    if (isAnswering) return;
+    isAnswering = true;
+
     const question = questions[currentQuestion];
     const option = question.options[optionIndex];
     
@@ -412,21 +436,22 @@ function selectOption(optionIndex) {
 // ==================== 计算结果 ====================
 function calculateResult() {
     let maxScore = 0;
-    let resultCharacter = 'Morty';
+    let resultKey = 'Morty';
     
     for (const [character, score] of Object.entries(scores)) {
         if (score > maxScore) {
             maxScore = score;
-            resultCharacter = character;
+            resultKey = character;
         }
     }
     
-    showResultPage(resultCharacter);
+    showResultPage(resultKey);
 }
 
 // ==================== 重新测试 ====================
 function restartTest() {
     currentQuestion = 0;
+    isAnswering = false;
     scores = {
         Rick: 0,
         Morty: 0,
@@ -435,6 +460,10 @@ function restartTest() {
         Jerry: 0,
         MrPoopybutthole: 0
     };
+    document.body.dataset.scene = '0';
+    progressBar.style.width = '0%';
+    currentQuestionText.textContent = '1';
+    questionNumber.textContent = '1';
     showLandingPage();
 }
 
